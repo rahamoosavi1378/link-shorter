@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    get link
+{% endblock %}
+
+{% block attachment_links %}
+    <link rel="stylesheet" href="{% static 'get-link/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+    <main class="section">
+        <section class="container">
+            <h1 class="title">Hello Baby :)</h1>
+            <p class="subtitle">Welcome to short links </p>
+            <hr>
+            <form action="{% url 'get_link_page' %}" method="post" class="">
+                <label class="label"> Address:
+                    <input class="input" type="text" placeholder="www.fuckgoogle.com">
+                </label>
+                <input type="button" value="Send" class="button is-link is-outlined">
+            </form>
+        </section>
+    </main>
+{% endblock %}
