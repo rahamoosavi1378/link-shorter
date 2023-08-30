@@ -18,11 +18,17 @@
             <hr>
             {% if has_errors %}
                 <div class="notification is-danger">
-                    {#                    <button class="delete"></button>#}
-                    email <strong>is not valid</strong>
+                    URL <strong>is not valid</strong>
+                </div>
+                <p class="is-vertical"></p>
+
+            {% elif has_success %}
+                <div class="notification is-success">
+                    URL <strong>saved ^-^</strong>
                 </div>
                 <p class="is-vertical"></p>
             {% endif %}
+
             <form action="{% url 'get_link_page' %}" method="post" class="">
                 <label class="label"> Address:
                     <input class="input" type="text" placeholder="www.fuckgoogle.com" name="url_address">
