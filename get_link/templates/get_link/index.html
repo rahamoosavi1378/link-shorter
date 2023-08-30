@@ -20,7 +20,8 @@
                 <label class="label"> Address:
                     <input class="input" type="text" placeholder="www.fuckgoogle.com">
                 </label>
-                <input type="button" value="Send" class="button is-link is-outlined">
+                <input type="submit" value="Submit" class="button is-link is-outlined">
+                {% csrf_token %}
             </form>
         </section>
     </main>
