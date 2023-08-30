@@ -16,9 +16,16 @@
             <h1 class="title">Hello Baby :)</h1>
             <p class="subtitle">Welcome to short links </p>
             <hr>
+            {% if has_errors %}
+                <div class="notification is-danger">
+                    {#                    <button class="delete"></button>#}
+                    email <strong>is not valid</strong>
+                </div>
+                <p class="is-vertical"></p>
+            {% endif %}
             <form action="{% url 'get_link_page' %}" method="post" class="">
                 <label class="label"> Address:
-                    <input class="input" type="text" placeholder="www.fuckgoogle.com">
+                    <input class="input" type="text" placeholder="www.fuckgoogle.com" name="url_address">
                 </label>
                 <input type="submit" value="Submit" class="button is-link is-outlined">
                 {% csrf_token %}
