@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, reverse
 from .forms import FormGetLink
 from .models import Links
+import hashlib
+
 
 # Create your views here.
 
@@ -9,12 +11,18 @@ def index(request):
         'has_errors': False,
         'has_success': False,
     }
+
     if request.method == 'POST':
         f = FormGetLink(request.POST)
         if f.is_valid():
             context['has_success'] = True
-            l = Links(user_input_link=f.cleaned_data['url_address'])
-            l.save()
+            url_address = f.cleaned_data['url_address']
+            url_hashed = hashlib.md5(url_address.encode()).hexdigest()
+            if not Links.objects.filter(hash_link=url_hashed).exists():
+                Links(user_input_link=url_address).save()
+            else:
+                # redirect to url f'/r/{hash_link}'
+                pass
         else:
             context['has_errors'] = True
             return render(request, template_name='get_link/index.html', context=context)
