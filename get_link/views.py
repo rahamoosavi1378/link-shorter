@@ -1,4 +1,4 @@
-from django.shortcuts import render, reverse
+from django.shortcuts import render, reverse, redirect
 from .forms import FormGetLink
 from .models import Links
 import hashlib
@@ -20,9 +20,9 @@ def index(request):
             url_hashed = hashlib.md5(url_address.encode()).hexdigest()
             if not Links.objects.filter(hash_link=url_hashed).exists():
                 Links(user_input_link=url_address).save()
-            else:
-                # redirect to url f'/r/{hash_link}'
-                pass
+
+            return redirect('hash_redirect', hash_redirect=url_hashed)
+
         else:
             context['has_errors'] = True
             return render(request, template_name='get_link/index.html', context=context)
