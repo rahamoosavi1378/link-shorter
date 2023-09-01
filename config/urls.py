@@ -23,5 +23,5 @@ urlpatterns = [
 
     # apps
     path('', include('get_link.urls')),
-    # path('r/', include('redirect_link.urls')),
+    path('', include('redirect_link.urls')),
 ]
