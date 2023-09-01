@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    redirect link
+{% endblock %}
+
+{% block content %}
+
+    <main class="section">
+        <section class="container">
+            <nav class="navbar">
+                <a href="{% url 'get_link_page' %}" class="navbar-item">Home</a>
+            </nav>
+            <hr>
+            <div class="notification is-warning">
+                <h1 class="title">Warning !!!</h1>
+                <p class="subtitle">Make sure of the desired link. This is to prevent some cyber attacks.</p>
+            </div>
+
+            <p><code class="is-flex-wrap-wrap">{{ info.user_input_link }}</code></p>
+            <br>
+            <a href="{{ info.user_input_link }}" class="button is-info">redirect</a>
+
+        </section>
+    </main>
+
+{% endblock %}
