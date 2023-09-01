@@ -1,4 +1,4 @@
-from django.shortcuts import render, reverse, redirect
+from django.shortcuts import render, reverse
 from .forms import FormGetLink
 from .models import Links
 import hashlib
@@ -10,6 +10,7 @@ def index(request):
     context = {
         'has_errors': False,
         'has_success': False,
+        'redirect_link': '',
     }
 
     if request.method == 'POST':
@@ -21,7 +22,8 @@ def index(request):
             if not Links.objects.filter(hash_link=url_hashed).exists():
                 Links(user_input_link=url_address).save()
 
-            return redirect('hash_redirect', hash_redirect=url_hashed)
+            context['redirect_link'] = request.build_absolute_uri(reverse('hash_redirect',args=[url_hashed]))
+            # return redirect('hash_redirect', hash_redirect=url_hashed)
 
         else:
             context['has_errors'] = True
