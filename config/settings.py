@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #local
-    'get_link.apps.GetLinkConfig'
+    'get_link.apps.GetLinkConfig',
+    'redirect_link.apps.RedirectLinkConfig'
 ]
 
 MIDDLEWARE = [
