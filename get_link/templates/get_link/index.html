@@ -36,6 +36,11 @@
                 <input type="submit" value="Submit" class="button is-link is-outlined">
                 {% csrf_token %}
             </form>
+            <br>
+            {% if redirect_link != "" %}
+                <p>short link: </p>
+                <code>{{ redirect_link }}</code>
+            {% endif %}
         </section>
     </main>
 {% endblock %}
