@@ -22,8 +22,7 @@ def index(request):
             if not Links.objects.filter(hash_link=url_hashed).exists():
                 Links(user_input_link=url_address).save()
 
-            context['redirect_link'] = request.build_absolute_uri(reverse('hash_redirect',args=[url_hashed]))
-            # return redirect('hash_redirect', hash_redirect=url_hashed)
+            context['redirect_link'] = request.build_absolute_uri(reverse('hash_redirect', args=[url_hashed]))
 
         else:
             context['has_errors'] = True
