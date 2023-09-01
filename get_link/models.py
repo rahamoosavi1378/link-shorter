@@ -7,8 +7,12 @@ import hashlib
 
 class Links(models.Model):
     user_input_link = models.URLField(null=False)
-    hash_link = models.CharField(max_length=32, null=False, default='',db_index=True)
+    hash_link = models.CharField(max_length=32,
+                                 null=False,
+                                 unique=True,
+                                 db_index=True)
     is_active = models.BooleanField(default=True)
+
     # date: start ~ expire
 
     def save(self, *args, **kwargs):

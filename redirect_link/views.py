@@ -17,4 +17,7 @@ def redirect_hash(request, hash_redirect):
         'info': Links.objects.get(hash_link=hash_redirect)
     }
 
-    return render(request, template_name='redirect_link/index.html', context=context)
+    return render(request,
+                  template_name='redirect_link/index.html',
+                  context=context
+                  )
