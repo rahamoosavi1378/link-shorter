@@ -18,6 +18,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('r/', views.redirect_page, name='redirect_page'),
+    path('r/', views.redirect_page),
     path('r/<str:hash_redirect>', views.redirect_hash, name='hash_redirect'),
 ]
