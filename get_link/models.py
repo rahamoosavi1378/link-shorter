@@ -12,6 +12,7 @@ class Links(models.Model):
     hash_link = models.CharField(max_length=32,
                                  null=False,
                                  db_index=True)
+    slug = models.SlugField(default='', db_index=True)
     is_active = models.BooleanField(default=True)
 
     # date: start ~ expire
