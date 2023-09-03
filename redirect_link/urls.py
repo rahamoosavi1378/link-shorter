@@ -20,4 +20,7 @@ from . import views
 urlpatterns = [
     path('r/', views.redirect_page),
     path('r/<str:hash_redirect>', views.redirect_hash, name='hash_redirect'),
+    path('h/<str:hash_r_10_char>', views.redirect_hash_10_char,
+         name='hash_r_10_char'),
+    path('s/<slug:hash_r_slug>', views.redirect_hash_slug, name='hash_r_slug'),
 ]
