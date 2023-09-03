@@ -13,7 +13,8 @@
 {% block content %}
     <main class="section">
         <section class="container">
-            <h1 class="title">Hello Baby :)</h1>
+            <h1 class="title" style="display: inline-block">Hello Baby :)</h1>
+            <a href="{% url 'get_link_page' %}" style="margin-left: 20px">refresh page</a>
             <p class="subtitle">Welcome to short links </p>
             <hr>
             {% if has_errors %}
@@ -39,8 +40,47 @@
             <br>
             {% if redirect_link != "" %}
                 <p>short link: </p>
-                <code>{{ redirect_link }}</code>
+                <div class="codes">
+                    <div class="tooltip">
+                        <span class="tooltip-text" id="myTooltip1">Copy to clipboard</span>
+                        <code id="myLink1" onclick="myFunction(1)" onmouseout="outFunc(1)">{{ redirect_link }}</code>
+                    </div>
+                    <div class="tooltip">
+                        <span class="tooltip-text" id="myTooltip2">Copy to clipboard</span>
+                        <code id="myLink2" onclick="myFunction(2)"
+                              onmouseout="outFunc(2)">{{ redirect_link_10_char }}</code>
+                    </div>
+                    <div class="tooltip">
+                        <span class="tooltip-text" id="myTooltip3">Copy to clipboard</span>
+                        <code id="myLink3" onclick="myFunction(3)"
+                              onmouseout="outFunc(3)">{{ redirect_link_slug }}</code>
+                    </div>
+                </div>
+
+
+
+
+                <a href="{{ redirect_link }}" class="button is-dark" target="_blank">test</a>
             {% endif %}
         </section>
     </main>
+{% endblock %}
+
+{% block attach_js_files %}
+    <script>
+        function myFunction(num) {
+            let copyText = document.getElementById("myLink" + num);
+
+            navigator.clipboard.writeText(copyText.innerText);
+
+            let tooltip = document.getElementById("myTooltip" + num);
+
+            tooltip.innerHTML = "Copied: <br>" + copyText.innerText;
+        }
+
+        function outFunc(num) {
+            let tooltip = document.getElementById("myTooltip" + num);
+            tooltip.innerHTML = "Copy to clipboard";
+        }
+    </script>
 {% endblock %}
