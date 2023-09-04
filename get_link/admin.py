@@ -6,6 +6,7 @@ from . import models
 
 class LinksAdmin(admin.ModelAdmin):
     list_display = ['user_input_link', 'hash_link', 'slug', 'is_active']
+    list_editable = ['is_active']
 
 
 admin.site.register(models.Links, LinksAdmin)
