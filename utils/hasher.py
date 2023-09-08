@@ -6,7 +6,7 @@ import hashlib
 class MD5:
     txt = ''
 
-    def __init__(self, txt):
+    def __init__(self, txt: str) -> None:
         self.txt = txt
 
     def md5(self):
@@ -15,9 +15,6 @@ class MD5:
 
     def __str__(self):
         return str(self.txt)
-
-
-# print(MD5('http://google.com').md5()) # test
 
 
 class GenSlug:
@@ -29,5 +26,3 @@ class GenSlug:
 
     def __str__(self):
         return self.GenSlug()
-
-# print(GenSlug()) # test
