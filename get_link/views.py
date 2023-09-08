@@ -16,6 +16,7 @@ def index(request):
         'redirect_link_10_char': '',
         'redirect_link_slug': '',
     }
+    status_code = 200
 
     if request.method == 'POST':
         f = FormGetLink(request.POST)
@@ -44,6 +45,11 @@ def index(request):
 
         else:
             context['has_errors'] = True
+            status_code = 422
 
-    return render(request, template_name='get_link/index.html',
-                  context=context)
+    return render(
+        request,
+        template_name='get_link/index.html',
+        context=context,
+        status=status_code,
+    )
