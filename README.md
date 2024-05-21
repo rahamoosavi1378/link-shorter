@@ -1,9 +1,6 @@
 Versions:
-- python 3.8.10
-- Django 4.2.4
-
-OS:
-- Zorin OS 16.3 (ubuntu 20.04)
+- python >= 3.8 
+- Django >= 4
 
 Run:
 ```shell
